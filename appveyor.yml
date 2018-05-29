@@ -1,13 +1,13 @@
 
 image: 
   - Ubuntu
-  
+before_build:  
   - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install -DBUILD_TESTS=ON 
   
-
+build_script:
   - cmake --build _build
   - cmake --build _build --target test
   - cmake --build _build --target install
-  
+test_script:  
   - cd _build
   - ./check -s -r compact
