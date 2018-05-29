@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/andrewJA/AVLTree.svg?branch=master)](https://travis-ci.org/andrewJA/AVLTree)
-
+[![Build Status](https://travis-ci.org/Beenv12/BSTTree.svg?branch=develop)](https://travis-ci.org/Beenv12/BSTTree)
+[![Build Status](https://travis-ci.org/Beenv12/BSTTree.svg?branch=develop)](https://ci.appveyor.com/project/Beenv12/bsttree)
 # Проект Tree
 
 Целью данного проекта является разработка программы для работы с двоичным деревом поиска (далее будем называть просто деревом) со следующим TUI:
