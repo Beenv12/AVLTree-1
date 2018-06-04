@@ -15,7 +15,7 @@ set(TREE_VERSION
 ${TREE_VERSION_MAJOR}.${TREE_VERSION_MINOR}.${TREE_VERSION_PATCH}.${TREE_VERSION_TWEAK})
 set(TREE_VERSION_STRING "v${TREE_VERSION}")
 
-add_library(tree STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/Tree.cpp)
+add_library(tree STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/tree.cpp)
 
 target_include_directories(tree PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
