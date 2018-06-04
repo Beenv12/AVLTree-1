@@ -39,7 +39,7 @@ add_test(NAME check COMMAND check "-s" "-r" "compact" "--use-colour" "yes")
 	include(CodeCoverage)
 	set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
 	set(LCOV_REMOVE_EXTRA "'tests/*'")
-  set(LCOV_REMOVE_EXTRA "'sources/tree.cpp'") 
+
 	add_executable(unit_tests ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_TEST_SOURCES})
 	target_link_libraries(unit_tests tree tui ${DEPENDS_LIBRARIES})
 	setup_target_for_coverage(unit_tests_coverage unit_tests coverage)
