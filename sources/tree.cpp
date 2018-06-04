@@ -13,11 +13,7 @@ struct Node
 		this->right = nullptr;
 	}
 
-	~Node()
-	{
-		delete left;
-		delete right;
-	}
+	~Node() {}
 
 	int data;
 	Node *left;
@@ -257,7 +253,7 @@ Tree::Tree(std::initializer_list<int> list)
 //деструктор
 Tree::~Tree()
 {
-	delete root;
+	clear(root);
 	//delete treeVector;
 };
 
@@ -276,10 +272,9 @@ bool Tree::insert(Node *&root, int value)
 // вставка значения (вызов из вне)
 bool Tree::insert(int value)
 {
-	bool isExist = exists(value);
-	if (isExist)
+	if (exists(value))
 		return false;
-	return this->insert(this->root, value);
+	return insert(root, value);
 }
 
 Node *Tree::getMin(Node *&root)
@@ -342,6 +337,20 @@ bool Tree::remove(int value)
 		return false;
 	else
 		return true;
+}
+
+Node *Tree::clear(Node *currNode)
+{
+	if (currNode == nullptr)
+	{
+		return nullptr;
+	}
+	else
+	{
+		currNode->left = clear(currNode->left);
+		currNode->right = clear(currNode->right);
+		delete currNode;
+	}
 }
 
 //поиск узла в дереве (приватная функция)
@@ -462,21 +471,14 @@ void Tree::show()
 	}
 }
 
-std::string Tree::printFile()
-{
-	std::string res = this->privatePrintFile(this->root, "");
-	return res;
-}
-
-std::string Tree::privatePrintFile(Node *root, std::string output)
+void Tree::makeOutput(Node *root)
 {
 	if (root != nullptr)
 	{
-		output += " " + root->data;
-		this->privatePrintFile(root->left, output);
-		this->privatePrintFile(root->right, output);
+		this->output = this->output + std::to_string(root->data) + " ";
+		makeOutput(root->left);
+		makeOutput(root->right);
 	}
-	return output;
 }
 
 //сохраняем в файл
@@ -493,7 +495,9 @@ bool Tree::save()
 	if (!filecheck)
 	{
 		file.open(path);
-		file << this->printFile();
+		this->output = "";
+		this->makeOutput(this->root);
+		file << this->output;
 		file.close();
 		std::cout << "Сообщение было успешно сохранено" << std::endl;
 		return true;
@@ -505,7 +509,9 @@ bool Tree::save()
 		if (answer == "yes")
 		{
 			file.open(path);
-			file << this->printFile();
+			this->output = "";
+			this->makeOutput(this->root);
+			file << this->output;
 			file.close();
 			std::cout << "Сообщение было успешно сохранено" << std::endl;
 			return true;
@@ -528,14 +534,18 @@ bool Tree::save(std::string path)
 	if (!filecheck)
 	{
 		file.open(path);
-		file << this->printFile();
+		this->output = "";
+		this->makeOutput(this->root);
+		file << this->output;
 		file.close();
 		std::cout << "Сообщение было успешно сохранено" << std::endl;
 	}
 	else
 	{
 		file.open(path);
-		file << this->printFile();
+		this->output = "";
+		this->makeOutput(this->root);
+		file << this->output;
 		file.close();
 		std::cout << "Сообщение было успешно сохранено" << std::endl;
 		filecheck.close();
@@ -548,8 +558,11 @@ bool Tree::load()
 {
 	std::cout << "Введите путь к файлу" << std::endl;
 	std::string path;
+	std::string stroka = "";
+	std::vector<int> vector;
 	std::cin >> path;
 	std::ifstream file;
+
 	file.open(path);
 	if (!file)
 	{
@@ -558,9 +571,16 @@ bool Tree::load()
 	}
 	else
 	{
-		std::string treeVector = "";
-		file >> treeVector;
-		std::cout << "Файл успешно считан" << std::endl;
+		if (root != nullptr)
+			clear(root);
+
+		int element;
+		while (file >> element)
+		{
+			this->insert(root, element);
+		}
+		std::cout
+			<< "Файл успешно считан" << std::endl;
 		return true;
 	}
 }
@@ -576,8 +596,14 @@ bool Tree::load(std::string path)
 	}
 	else
 	{
-		std::string treeVector = "";
-		file >> treeVector;
+		if (root != nullptr)
+			clear(root);
+
+		int element;
+		while (file >> element)
+		{
+			this->insert(root, element);
+		}
 		std::cout << "Файл успешно считан" << std::endl;
 		return true;
 	}
