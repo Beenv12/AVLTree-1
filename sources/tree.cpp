@@ -263,18 +263,22 @@ bool Tree::insert(Node *&root, int value)
 	if (root == nullptr)
 		root = new Node(value);
 	else if (value < root->data)
-		insert(root->left, value);
+	{
+		this->insert(root->left, value);
+	}
 	else
-		insert(root->right, value);
+	{
+		this->insert(root->right, value);
+	}
 	return true;
 }
 
 // вставка значения (вызов из вне)
 bool Tree::insert(int value)
 {
-	if (exists(value))
+	if (this->exists(value))
 		return false;
-	return insert(root, value);
+	return this->insert(root, value);
 }
 
 Node *Tree::getMin(Node *&root)
@@ -339,7 +343,7 @@ bool Tree::remove(int value)
 		return true;
 }
 
-Node *Tree::clear(Node *currNode)
+Node *Tree::clear(Node *&currNode)
 {
 	if (currNode == nullptr)
 	{
@@ -347,10 +351,11 @@ Node *Tree::clear(Node *currNode)
 	}
 	else
 	{
-		currNode->left = clear(currNode->left);
-		currNode->right = clear(currNode->right);
+		this->clear(currNode->left);
+		this->clear(currNode->right);
 		delete currNode;
 	}
+	return nullptr;
 }
 
 //поиск узла в дереве (приватная функция)
@@ -571,16 +576,15 @@ bool Tree::load()
 	}
 	else
 	{
-		if (root != nullptr)
-			clear(root);
+		if (this->root != nullptr)
+			clear(this->root);
 
 		int element;
 		while (file >> element)
 		{
-			this->insert(root, element);
+			insert(this->root, element);
 		}
-		std::cout
-			<< "Файл успешно считан" << std::endl;
+		std::cout << "Файл успешно считан" << std::endl;
 		return true;
 	}
 }
