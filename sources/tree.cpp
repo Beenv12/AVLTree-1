@@ -382,7 +382,7 @@ bool Tree::exists(Node *&root, int value)
 //поиск (глобальная)
 bool Tree::exists(int value)
 {
-	this->exists(this->root, value);
+	return this->exists(this->root, value);
 }
 
 //вывод дерева в различных прядках (III этап) (private)
