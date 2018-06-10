@@ -21,6 +21,7 @@ TEST_CASE("output values should match input values", "[file]")
  obj.MakeDecisionTree(6,&tree);
  obj.MakeDecisionTree(7,&tree);
  obj.MakeDecisionTree(8,&tree);
+  obj.MakeDecisionTree(9,&tree);
 
     obj.ChosenFunction();
  
@@ -51,5 +52,4 @@ TEST_CASE("output values should match input values", "[file]")
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
  
-   tree.clear();
 }
