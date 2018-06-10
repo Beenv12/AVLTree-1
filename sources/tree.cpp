@@ -226,7 +226,9 @@ void TUI::MakeDecisionTree(int chosenValue, Tree *tree)
 }
 
 //конструктор по умолчанию
-Tree::Tree(){};
+Tree::Tree(){
+	this->root = nullptr;
+};
 
 //конструктор через вектор
 Tree::Tree(std::vector<int> treeList)
