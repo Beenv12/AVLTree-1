@@ -27,7 +27,7 @@ TEST_CASE("output values should match input values", "[file]")
     obj.ChosenFunction();
  
     tree.show();
-    tree2.show();
+   // tree2.show();
     std::cout << "Pre: ";
     tree.print("pre");
     std::cout << "In: ";
