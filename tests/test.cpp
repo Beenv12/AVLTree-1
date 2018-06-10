@@ -51,6 +51,5 @@ TEST_CASE("output values should match input values", "[file]")
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
  
-   ~Tree tree;
- ~Tree tree1;
+   clear(*tree);
 }
