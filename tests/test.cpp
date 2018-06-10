@@ -6,14 +6,13 @@ TEST_CASE("output values should match input values", "[file]")
 {
     TUI obj;
     std::vector<int> a;
- Tree tree2(a);
  a = {3, 4, 4, 2, 6, 5, 7};
     a = obj.CorrectFunction(a);
     REQUIRE(a[2] == 2);
  
     Tree tree(a);
     Tree tree1({3, 4, 4, 2, 6, 5, 7});
- 
+     Tree tree2();
     obj.outStars();
     obj.MakeDecisionTree(1,&tree);
     obj.MakeDecisionTree(2,&tree);
