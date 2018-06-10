@@ -9,7 +9,7 @@ TEST_CASE("output values should match input values", "[file]")
     a = obj.CorrectFunction(a);
     REQUIRE(a[2] == 2);
  
-    Tree tree = new Tree(a);
+    Tree tree(a);
     Tree tree1 = {3, 4, 4, 2, 6, 5, 7};
     Tree tree2();
 
@@ -52,6 +52,4 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isWrite == true);
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
- 
-    delete &tree;
 }
