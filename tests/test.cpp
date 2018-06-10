@@ -52,4 +52,7 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isWrite == true);
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
+ 
+    Node* afterClear = tree.clear();
+    REQUIRE(afterClear == nullptr);
 }
