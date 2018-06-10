@@ -9,7 +9,7 @@ TEST_CASE("output values should match input values", "[file]")
     a = obj.CorrectFunction(a);
     REQUIRE(a[2] == 2);
  
-    Tree tree = new Tree(a);
+    Tree tree(a);
  
     obj.outStars();
     obj.MakeDecisionTree(1,&tree);
@@ -43,5 +43,5 @@ TEST_CASE("output values should match input values", "[file]")
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
  
-    delete tree;
+    //delete tree;
 }
