@@ -11,6 +11,7 @@ TEST_CASE("output values should match input values", "[file]")
  
     Tree tree(a);
     Tree tree1({3, 4, 4, 2, 6, 5, 7});
+    Tree tree2 = new Tree();
  
     obj.outStars();
     obj.MakeDecisionTree(1,&tree);
@@ -51,5 +52,4 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isWrite == true);
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
-    tree.clear();
 }
