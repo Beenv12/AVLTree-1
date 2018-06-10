@@ -255,7 +255,7 @@ Tree::Tree(std::initializer_list<int> list)
 //деструктор
 Tree::~Tree()
 {
-	clear(root);
+	this->clear(this->root);
 	//delete treeVector;
 };
 
