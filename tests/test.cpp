@@ -4,41 +4,43 @@
 using namespace AVLTree;
 TEST_CASE("output values should match input values", "[file]")
 {
-    Tree tree = {3, 4, 2, 6, 5, 7};
+std::vector a;
+a.push_back([1,2,2,3]);
 
-    tree.show();
+Tree tree = {3, 4, 2, 6, 5, 7};
+TUI obj;
+obj.outputStars();
+obj.MakeDecisionTree(1,tree);
+std::vector b = obj.CorrectFunction(a);
+REQUIRE(b[3] == 3);
+obj.ChosenFunction();
 
-    std::cout << "Pre: ";
-    tree.print("pre");
-    std::cout << "In: ";
-    tree.print("in");
-    std::cout << "Post: ";
-    tree.print("post");
+tree.show();
 
-    bool isInsert = tree.insert(95);
-    REQUIRE(isInsert == true);
-    REQUIRE(tree.exists(95) == true);
+std::cout « "Pre: ";
+tree.print("pre");
+std::cout « "In: ";
+tree.print("in");
+std::cout « "Post: ";
+tree.print("post");
 
-    bool isDelete = tree.remove(95);
-    REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(95) == false);
-    bool isDelete4 = tree.remove(7);
-    REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(7) == false);
+bool isInsert = tree.insert(95);
+REQUIRE(isInsert == true);
+REQUIRE(tree.exists(95) == true);
 
-    std::string path = "test.txt";
-    REQUIRE(tree.fileExist("not_file.txt") == false);
-    bool isWrite = tree.save("test.txt");
-    REQUIRE(isWrite == true);
-    bool isRead = tree.load(path);
-    REQUIRE(isRead == true);
+bool isDelete = tree.remove(95);
+REQUIRE(isDelete == true);
+REQUIRE(tree.exists(95) == false);
+bool isDelete4 = tree.remove(7);
+REQUIRE(isDelete == true);
+REQUIRE(tree.exists(7) == false);
 
-    bool isInsert100 = tree.insert(100);
-    bool isInsert101 = tree.insert(101);
-    REQUIRE(isInsert100 == true);
-    REQUIRE(isInsert101 == true);
+std::string path = "test.txt";
+REQUIRE(tree.fileExist("not_file.txt") == false);
+bool isWrite = tree.save("test.txt");
+REQUIRE(isWrite == true);
+bool isRead = tree.load(path);
+REQUIRE(isRead == true);
 
-    delete &tree;
-    REQUIRE(tree.exists(100) == false);
-    REQUIRE(tree.exists(101) == false);
+delete &tree;
 }
