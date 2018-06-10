@@ -357,7 +357,6 @@ Node *Tree::clear(Node *&currNode)
 		this->clear(currNode->right);
 		delete currNode;
 	}
-	return nullptr;
 }
 
 //поиск узла в дереве (приватная функция)
