@@ -6,7 +6,7 @@ TEST_CASE("output values should match input values", "[file]")
 {
     TUI obj;
     std::vector<int> a;
-    a.push_back([3, 4, 4, 2, 6, 5, 7]);
+    a.push_back({3, 4, 4, 2, 6, 5, 7});
     a = obj.CorrectFunction(a);
     REQUIRE(a[2] == 2);
  
