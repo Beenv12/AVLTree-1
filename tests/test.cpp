@@ -11,7 +11,7 @@ TEST_CASE("output values should match input values", "[file]")
  
     Tree tree(a);
     Tree tree1({3, 4, 4, 2, 6, 5, 7});
-   Tree();
+   Tree tree2();
  
     obj.outStars();
     obj.MakeDecisionTree(1,&tree);
