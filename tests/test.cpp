@@ -4,14 +4,14 @@
 using namespace AVLTree;
 TEST_CASE("output values should match input values", "[file]")
 {
-    std::vector a;
+    TUI obj;
+    std::vector<int> a;
     a.push_back([3, 4, 4, 2, 6, 5, 7]);
     a = obj.CorrectFunction(a);
     REQUIRE(a[2] == 2);
  
     Tree tree = new Tree(a);
  
-    TUI obj;
     obj.outputStars();
     obj.MakeDecisionTree(1,tree);
  
@@ -44,5 +44,5 @@ TEST_CASE("output values should match input values", "[file]")
     bool isRead = tree.load(path);
     REQUIRE(isRead == true);
  
-    delete tree;
+    delete *tree;
 }
