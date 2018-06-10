@@ -13,7 +13,7 @@ TEST_CASE("output values should match input values", "[file]")
  
     obj.outStars();
     obj.MakeDecisionTree(1,&tree);
- 
+  obj.MakeDecisionTree(2,&tree);
     obj.ChosenFunction();
  
     tree.show();
