@@ -1,8 +1,5 @@
 *build*/
 *install*/
-<<<<<<< HEAD
-=======
 *vscode*/
->>>>>>> b8fa0f67b21e5b645c57cdbd2b25df06b66d96f7
 *.swp
 .idea/
