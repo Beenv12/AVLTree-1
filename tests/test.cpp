@@ -14,19 +14,19 @@ TEST_CASE("output values should match input values", "[file]")
     Tree tree2();
 
     obj.outStars();
-    obj.MakeDecisionTree(1,&tree);
-    obj.MakeDecisionTree(2,&tree);
-    obj.MakeDecisionTree(3,&tree);
-    obj.MakeDecisionTree(4,&tree);
-    obj.MakeDecisionTree(5,&tree);
-    obj.MakeDecisionTree(6,&tree);
-    obj.MakeDecisionTree(7,&tree);
-    obj.MakeDecisionTree(8,&tree);
-    obj.MakeDecisionTree(9,&tree);
+    obj.MakeDecisionTree(1,tree);
+    obj.MakeDecisionTree(2,tree);
+    obj.MakeDecisionTree(3,tree);
+    obj.MakeDecisionTree(4,tree);
+    obj.MakeDecisionTree(5,tree);
+    obj.MakeDecisionTree(6,tree);
+    obj.MakeDecisionTree(7,tree);
+    obj.MakeDecisionTree(8,tree);
+    obj.MakeDecisionTree(9,tree);
 
     obj.ChosenFunction();
  
-    tree.show();
+    tree->show();
 
     std::cout << "Pre: ";
     tree.print("pre");
@@ -35,22 +35,22 @@ TEST_CASE("output values should match input values", "[file]")
     std::cout << "Post: ";
     tree.print("post");
  
-    bool isInsert = tree.insert(95);
+    bool isInsert = tree->insert(95);
     REQUIRE(isInsert == true);
-    REQUIRE(tree.exists(95) == true);
+    REQUIRE(tree->exists(95) == true);
  
-    bool isDelete = tree.remove(95);
+    bool isDelete = tree->remove(95);
     REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(95) == false);
-    bool isDelete4 = tree.remove(7);
+    REQUIRE(tree->exists(95) == false);
+    bool isDelete4 = tree->remove(7);
     REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(7) == false);
+    REQUIRE(tree->exists(7) == false);
  
     std::string path = "test.txt";
-    REQUIRE(tree.fileExist("not_file.txt") == false);
-    bool isWrite = tree.save("test.txt");
+    REQUIRE(tree->fileExist("not_file.txt") == false);
+    bool isWrite = tree->save("test.txt");
     REQUIRE(isWrite == true);
-    bool isRead = tree.load(path);
+    bool isRead = tree->load(path);
     REQUIRE(isRead == true);
  
     delete tree;
