@@ -53,6 +53,8 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isWrite == true);
     bool isRead = tree->load(path);
     REQUIRE(isRead == true);
+    tree.save("");
+    tree.load(""):
  
     delete tree;
     tree->show();
