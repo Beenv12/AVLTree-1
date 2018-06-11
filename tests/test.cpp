@@ -56,5 +56,5 @@ TEST_CASE("output values should match input values", "[file]")
  
     delete tree;
     tree->print("pre");
-    tree->exists(4);
+    
 }
