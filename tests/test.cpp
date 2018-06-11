@@ -29,11 +29,11 @@ TEST_CASE("output values should match input values", "[file]")
     tree->show();
 
     std::cout << "Pre: ";
-    tree.print("pre");
+    tree->print("pre");
     std::cout << "In: ";
-    tree.print("in");
+    tree->print("in");
     std::cout << "Post: ";
-    tree.print("post");
+    tree->print("post");
  
     bool isInsert = tree->insert(95);
     REQUIRE(isInsert == true);
