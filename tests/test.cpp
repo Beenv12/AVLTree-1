@@ -55,4 +55,6 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isRead == true);
  
     delete tree;
+    tree->print("pre");
+    tree->exists(4);
 }
