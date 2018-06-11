@@ -54,7 +54,7 @@ TEST_CASE("output values should match input values", "[file]")
     bool isRead = tree->load(path);
     REQUIRE(isRead == true);
     tree->save("");
-    tree->load(""):
+    tree->load("");
  
     delete tree;
     tree->show();
