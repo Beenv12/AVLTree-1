@@ -233,7 +233,7 @@ Tree::Tree(){
 //конструктор через вектор
 Tree::Tree(std::vector<int> treeList)
 {
-	for (int i = 0; i < treeList.size(); ++i)
+	for (unsigned i = 0; i < treeList.size(); ++i)
 	{
 		this->treeVector.push_back(treeList[i]);
 	}
