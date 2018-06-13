@@ -39,7 +39,7 @@ class Tree
 	Node *getMin(Node *&node);
 	bool exists(Node *&root, int value);
 	void showTree(Node *root, int size);
-	Node *clear(Node *&currNode);
+	void clear(Node *&currNode);
 
 	Node *root;
 	std::string output;
