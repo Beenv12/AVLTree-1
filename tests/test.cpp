@@ -55,7 +55,14 @@ TEST_CASE("output values should match input values", "[file]")
     REQUIRE(isRead == true);
     tree->save("");
     tree->load("");
+<<<<<<< HEAD
 
     delete tree;
     tree->show();
 }
+=======
+
+    delete tree;
+    tree->show();
+}
+>>>>>>> dd176f26ca503cdbb1853fa3f8e76d3066263464
