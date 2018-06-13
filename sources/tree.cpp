@@ -440,7 +440,7 @@ void Tree::showTree(Node *root, int size)
 	if (root == nullptr)
 		return;
 	showTree(root->right, size + 1);
-	for (unsigned i = 0; i < size; ++i)
+	for (int i = 0; i < size; ++i)
 		std::cout << " --";
 	if (size != 0)
 		std::cout << " --";
