@@ -12,7 +12,7 @@ struct Node;
 //enum class traversal_order {pre, in, post};
 class Tree
 {
-  public:
+public:
 	Tree();
 	Tree(std::vector<int> treeList);
 	Tree(std::initializer_list<int> list);
@@ -32,7 +32,7 @@ class Tree
 
 	~Tree();
 
-  private:
+private:
 	bool insert(Node *&root, int value);
 	void print(std::string order, Node *root);
 	Node *remove(Node *&root, int value);
@@ -48,7 +48,7 @@ class Tree
 
 class TUI
 {
-  public:
+public:
 	std::vector<int> CorrectFunction(std::vector<int> a);
 	int ChosenFunction();
 	void MakeDecisionTree(int chosenValue, Tree *tree);
