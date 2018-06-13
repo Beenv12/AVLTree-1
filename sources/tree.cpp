@@ -345,17 +345,18 @@ bool Tree::remove(int value)
 		return true;
 }
 
-Node *Tree::clear(Node *&currNode)
+void Tree::clear(Node *&currNode)
 {
 	if (currNode == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 	else
 	{
 		this->clear(currNode->left);
 		this->clear(currNode->right);
 		delete currNode;
+		currNode = nullptr;
 	}
 }
 
