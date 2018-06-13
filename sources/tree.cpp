@@ -226,14 +226,15 @@ void TUI::MakeDecisionTree(int chosenValue, Tree *tree)
 }
 
 //конструктор по умолчанию
-Tree::Tree(){
+Tree::Tree()
+{
 	this->root = nullptr;
 };
 
 //конструктор через вектор
 Tree::Tree(std::vector<int> treeList)
 {
-	for (int i = 0; i < treeList.size(); ++i)
+	for (unsigned i = 0; i < treeList.size(); ++i)
 	{
 		this->treeVector.push_back(treeList[i]);
 	}
@@ -345,19 +346,19 @@ bool Tree::remove(int value)
 		return true;
 }
 
-Node *Tree::clear(Node *&currNode)
+void Tree::clear(Node *&currNode)
 {
 	if (currNode == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 	else
 	{
 		this->clear(currNode->left);
 		this->clear(currNode->right);
 		delete currNode;
+		currNode = nullptr;
 	}
-	return nullptr;
 }
 
 //поиск узла в дереве (приватная функция)
@@ -439,7 +440,7 @@ void Tree::showTree(Node *root, int size)
 	if (root == nullptr)
 		return;
 	showTree(root->right, size + 1);
-	for (int i = 0; i < size; ++i)
+	for (unsigned i = 0; i < size; ++i)
 		std::cout << " --";
 	if (size != 0)
 		std::cout << " --";
@@ -553,4 +554,4 @@ bool Tree::fileExist(std::string path)
 		return false;
 	}
 }
-}
+} // namespace AVLTree

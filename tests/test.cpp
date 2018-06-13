@@ -4,41 +4,58 @@
 using namespace AVLTree;
 TEST_CASE("output values should match input values", "[file]")
 {
-    Tree tree = {3, 4, 2, 6, 5, 7};
+    TUI obj;
+    std::vector<int> a = {3, 4, 4, 2, 6, 8, 7};
+    a = obj.CorrectFunction(a);
+    REQUIRE(a[2] == 2);
 
-    tree.show();
+    Tree *tree = new Tree(a);
+    Tree tree1 = {3, 4, 4, 2, 6, 8, 7};
+    Tree *tree2 = new Tree();
+    Tree tree3(a);
+
+    obj.outStars();
+    obj.MakeDecisionTree(1, tree);
+    obj.MakeDecisionTree(2, tree);
+    obj.MakeDecisionTree(3, tree);
+    obj.MakeDecisionTree(4, tree);
+    obj.MakeDecisionTree(5, tree);
+    obj.MakeDecisionTree(6, tree);
+    obj.MakeDecisionTree(7, tree);
+    obj.MakeDecisionTree(8, tree);
+    obj.MakeDecisionTree(9, tree);
+
+    obj.ChosenFunction();
+
+    tree->show();
 
     std::cout << "Pre: ";
-    tree.print("pre");
+    tree->print("pre");
     std::cout << "In: ";
-    tree.print("in");
+    tree->print("in");
     std::cout << "Post: ";
-    tree.print("post");
+    tree->print("post");
 
-    bool isInsert = tree.insert(95);
+    bool isInsert = tree->insert(5);
     REQUIRE(isInsert == true);
-    REQUIRE(tree.exists(95) == true);
+    REQUIRE(tree->exists(5) == true);
 
-    bool isDelete = tree.remove(95);
+    bool isDelete = tree->remove(3);
     REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(95) == false);
-    bool isDelete4 = tree.remove(7);
+    REQUIRE(tree->exists(3) == false);
+    bool isDelete4 = tree->remove(7);
     REQUIRE(isDelete == true);
-    REQUIRE(tree.exists(7) == false);
+    REQUIRE(tree->exists(7) == false);
 
     std::string path = "test.txt";
-    REQUIRE(tree.fileExist("not_file.txt") == false);
-    bool isWrite = tree.save("test.txt");
+    REQUIRE(tree->fileExist("not_file.txt") == false);
+    bool isWrite = tree->save("test.txt");
     REQUIRE(isWrite == true);
-    bool isRead = tree.load(path);
+    bool isRead = tree->load(path);
     REQUIRE(isRead == true);
+    tree->save("");
+    tree->load("");
 
-    bool isInsert100 = tree.insert(100);
-    bool isInsert101 = tree.insert(101);
-    REQUIRE(isInsert100 == true);
-    REQUIRE(isInsert101 == true);
-
-    delete &tree;
-    REQUIRE(tree.exists(100) == false);
-    REQUIRE(tree.exists(101) == false);
+    delete tree;
+    tree->show();
 }
